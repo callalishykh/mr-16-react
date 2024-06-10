@@ -37,8 +37,26 @@ const Header = () => {
 
 const Counter = () => {
   const [count, setCount] = useState(0);
+  const [name, setName] = useState("Ali");
+  const [fname, setFname] = useState("Ali");
+  const [lname, setLname] = useState("");
+  const [data, setdata] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
 
-  const handleButtonClick = () => console.log("Button is clicked");
+  const handleButtonClick = () => {
+    console.log("Button is clicked");
+
+    setCount(count + 1);
+    setName("AliA");
+  };
+
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    console.log(fname, lname);
+  };
 
   const test = () => {
     const a = "test";
@@ -48,10 +66,37 @@ const Counter = () => {
   return (
     <div className='card'>
       <button onClick={handleButtonClick}>count is {count}</button>
-      <p>
+      {/*   <p>
         {test()}
+        {name}
+        <br />
         Edit <code>src/App.jsx</code> and save to test HMR
-      </p>
+      </p> */}
+
+      <h2>HTML Forms</h2>
+
+      <form>
+        <label for='fname'>First name:</label>
+        <br />
+        <input
+          type='text'
+          name='fname'
+          value={fname}
+          onChange={(e) => setFname(e.target.value)}
+        />
+        <br />
+        <label>Last name:</label>
+        <br />
+        <input
+          type='text'
+          name='lname'
+          value={lname}
+          onChange={(e) => setLname(e.target.value)}
+        />
+        <br />
+        <br />
+        <input type='submit' value='Submit' onClick={handleFormSubmission} />
+      </form>
     </div>
   );
 };
